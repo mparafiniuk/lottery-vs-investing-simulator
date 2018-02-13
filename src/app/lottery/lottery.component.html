@@ -1,0 +1,29 @@
+
+<!-- <app-config></app-config> -->
+
+<div>
+  <div>
+    <label>Initial amount of money
+      <input [(ngModel)]="config.initialAmount" size="10">
+    </label>
+  </div>
+
+  <div>
+    <label>Cost of lottery ticket
+      <input [(ngModel)]="config.costOfTicket" size="10">
+    </label>
+  </div>
+
+  <div>
+    <label>Number of daily bought tickets
+      <input [(ngModel)]="config.dailyNumberOfTickets" size="10">
+    </label>
+  </div>
+</div>
+
+<button (click)="startSimulation()">Start</button><br>
+<div [hidden]="!lotteryStarted">
+  Current amount <span>{{ currentAmount }}</span><br>
+</div>
+
+{{ log }}
