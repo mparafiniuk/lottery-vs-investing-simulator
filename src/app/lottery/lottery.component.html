@@ -28,7 +28,8 @@
 </div>
 
 <button (click)="startSimulation()" [hidden]="lotteryStarted">Start</button>
-<div [hidden]="!lotteryStarted">
+<button (click)="stopSimulation()" [hidden]="!lotteryStarted">Stop</button><br>
+<div>
   Amount: <span>{{ currentAmount }}</span><br>
   Day: <span>{{ currentDay }}</span>
 </div>

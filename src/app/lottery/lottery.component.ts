@@ -50,27 +50,26 @@ export class LotteryComponent implements OnInit {
     let simulationDays = Math.floor(this.config.simulationTime * this.daysInYear);
     console.log(simulationDays);
 
-    if(this.lotteryStarted === true) {
-      this.lotteryStarted = false;
-      clearInterval(this.simInterval);
-    }
-    else {
-      this.lotteryStarted = true;
-      this.loadConfigData();
+    this.lotteryStarted = true;
+    this.loadConfigData();
 
-      this.currentDay = 0;
-      this.simInterval = setInterval(() => {
-        this.luckyNumbers = this.generateNumbers();
+    this.currentDay = 0;
+    this.simInterval = setInterval(() => {
+      this.luckyNumbers = this.generateNumbers();
 
-        for(let i=0; i<this.config.dailyNumberOfTickets; i++) {
-          this.draw();
-        }
+      for(let i=0; i<this.config.dailyNumberOfTickets; i++) {
+        this.draw();
+      }
 
-        if(++this.currentDay >= simulationDays) {
-          clearInterval(this.simInterval);
-        }
-      }, 20);
-    }
+      if(++this.currentDay >= simulationDays) {
+        clearInterval(this.simInterval);
+      }
+    }, 20);
+  }
+
+  stopSimulation(): void {
+    this.lotteryStarted = false;
+    clearInterval(this.simInterval);
   }
 
   loadConfigData(): void {
