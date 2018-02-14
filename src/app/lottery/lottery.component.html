@@ -19,11 +19,18 @@
       <input [(ngModel)]="config.dailyNumberOfTickets" size="10">
     </label>
   </div>
+
+  <div>
+    <label>Simulation time (in years)
+      <input [(ngModel)]="config.simulationTime" size="10">
+    </label>
+  </div>
 </div>
 
-<button (click)="startSimulation()">Start</button><br>
+<button (click)="startSimulation()" [hidden]="lotteryStarted">Start</button>
 <div [hidden]="!lotteryStarted">
-  Current amount <span>{{ currentAmount }}</span><br>
+  Amount: <span>{{ currentAmount }}</span><br>
+  Day: <span>{{ currentDay }}</span>
 </div>
 
 {{ log }}

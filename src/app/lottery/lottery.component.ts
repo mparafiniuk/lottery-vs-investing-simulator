@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
 import { Config } from '../config';
 
@@ -7,14 +6,14 @@ import { Config } from '../config';
   selector: 'app-lottery',
   templateUrl: './lottery.component.html',
   styleUrls: ['./lottery.component.css'],
-  imports: [FormsModule]
 })
 export class LotteryComponent implements OnInit {
 
   // TODO:
-  // lottery options:
+  // config options:
 
   // start/stop button
+  // progress bar
   // option to select popular lotteries
   // exclude duplicates when generating numbers
   // configuration of prizes
@@ -22,18 +21,24 @@ export class LotteryComponent implements OnInit {
   lotteryStarted: boolean = false;
   config: Config = {
     initialAmount: 15,
+
     costOfTicket: 5,
     dailyNumberOfTickets: 2,
+
     numberOfDrawnNumbers: 6,
-    numberOfAllNumbers: 42
+    numberOfAllNumbers: 42,
+
+    simulationTime: 1
   };
 
   luckyNumbers: number[];
   currentAmount: number;
+  currentDay: number;
 
   simInterval: number;
 
-  log: string[] = "";
+  log: string = "";
+  readonly daysInYear: number = 365.242199;
 
   constructor() { }
 
@@ -42,6 +47,9 @@ export class LotteryComponent implements OnInit {
   }
 
   startSimulation(): void {
+    let simulationDays = Math.floor(this.config.simulationTime * this.daysInYear);
+    console.log(simulationDays);
+
     if(this.lotteryStarted === true) {
       this.lotteryStarted = false;
       clearInterval(this.simInterval);
@@ -50,11 +58,16 @@ export class LotteryComponent implements OnInit {
       this.lotteryStarted = true;
       this.loadConfigData();
 
+      this.currentDay = 0;
       this.simInterval = setInterval(() => {
         this.luckyNumbers = this.generateNumbers();
 
         for(let i=0; i<this.config.dailyNumberOfTickets; i++) {
           this.draw();
+        }
+
+        if(++this.currentDay >= simulationDays) {
+          clearInterval(this.simInterval);
         }
       }, 20);
     }
