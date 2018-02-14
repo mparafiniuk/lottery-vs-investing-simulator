@@ -22,13 +22,14 @@
 
   <div>
     <label>Simulation time (in years)
-      <input [(ngModel)]="config.simulationTime" size="10">
+      <input [(ngModel)]="config.simulationYears" size="10">
     </label>
   </div>
 </div>
 
 <button (click)="startSimulation()" [hidden]="lotteryStarted">Start</button>
-<button (click)="stopSimulation()" [hidden]="!lotteryStarted">Stop</button><br>
+<button (click)="stopSimulation()" [hidden]="!lotteryStarted">Stop</button>
+<button (click)="pauseSimulation()" [hidden]="!lotteryStarted">Pause</button><br>
 <div>
   Amount: <span>{{ currentAmount }}</span><br>
   Day: <span>{{ currentDay }}</span>

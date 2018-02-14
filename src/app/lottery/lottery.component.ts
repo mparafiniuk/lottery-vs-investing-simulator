@@ -19,6 +19,8 @@ export class LotteryComponent implements OnInit {
   // configuration of prizes
 
   lotteryStarted: boolean = false;
+  simulationPaused: boolean = false;
+
   config: Config = {
     initialAmount: 15,
 
@@ -28,7 +30,7 @@ export class LotteryComponent implements OnInit {
     numberOfDrawnNumbers: 6,
     numberOfAllNumbers: 42,
 
-    simulationTime: 1
+    simulationYears: 1
   };
 
   luckyNumbers: number[];
@@ -37,8 +39,10 @@ export class LotteryComponent implements OnInit {
 
   simInterval: number;
 
-  log: string = "";
+  simulationDays: number;
   readonly daysInYear: number = 365.242199;
+
+  log: string = "";
 
   constructor() { }
 
@@ -47,24 +51,11 @@ export class LotteryComponent implements OnInit {
   }
 
   startSimulation(): void {
-    let simulationDays = Math.floor(this.config.simulationTime * this.daysInYear);
-    console.log(simulationDays);
-
     this.lotteryStarted = true;
     this.loadConfigData();
 
     this.currentDay = 0;
-    this.simInterval = setInterval(() => {
-      this.luckyNumbers = this.generateNumbers();
-
-      for(let i=0; i<this.config.dailyNumberOfTickets; i++) {
-        this.draw();
-      }
-
-      if(++this.currentDay >= simulationDays) {
-        clearInterval(this.simInterval);
-      }
-    }, 20);
+    this.simulation();
   }
 
   stopSimulation(): void {
@@ -72,8 +63,35 @@ export class LotteryComponent implements OnInit {
     clearInterval(this.simInterval);
   }
 
+  pauseSimulation(): void {
+    if(this.simulationPaused === false) {
+      clearInterval(this.simInterval);
+      this.simulationPaused = true;
+    }
+    else {
+      this.simulation();
+    }
+  }
+
+  simulation(): void {
+    this.simulationPaused = false;
+
+    this.simInterval = setInterval(() => {
+      this.luckyNumbers = this.generateNumbers();
+
+      for(let i=0; i<this.config.dailyNumberOfTickets; i++) {
+        this.draw();
+      }
+
+      if(++this.currentDay >= this.simulationDays) {
+        clearInterval(this.simInterval);
+      }
+    }, 20);
+  }
+
   loadConfigData(): void {
     this.currentAmount = this.config.initialAmount;
+    this.simulationDays = Math.floor(this.config.simulationYears * this.daysInYear);
   }
 
   generateNumbers(): number[] {

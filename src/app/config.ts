@@ -7,5 +7,5 @@ export class Config {
   numberOfDrawnNumbers: number;
   numberOfAllNumbers: number;
 
-  simulationTime: number;
+  simulationYears: number;
 }
