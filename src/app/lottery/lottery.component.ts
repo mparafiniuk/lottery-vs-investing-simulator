@@ -15,6 +15,7 @@ export class LotteryComponent implements OnInit {
   // progress bar
   // definitions of all predefined lotteries
   // exclude duplicates when generating numbers
+  // add possibility to define all lottery properties
 
   lotteryStarted: boolean = false;
   simulationPaused: boolean = false;
@@ -112,7 +113,7 @@ export class LotteryComponent implements OnInit {
       if(++this.currentDay >= this.simulationDays) {
         clearInterval(this.simInterval);
       }
-    }, 20);
+    }, 1);
   }
 
   loadConfigData(): void {
@@ -122,15 +123,19 @@ export class LotteryComponent implements OnInit {
 
   generateNumbers(): number[] {
     let generatedNumbers: number[] = [];
-    for(let i=0; i<this.config.numberOfDrawnNumbers; i++) {
-      generatedNumbers.push(this.randomInt(1,this.config.numberOfAllNumbers));
+
+    while(generatedNumbers.length < this.config.numberOfDrawnNumbers) {
+      let randomNumber = this.randomInt(1, this.config.numberOfAllNumbers);
+
+      if(generatedNumbers.indexOf(randomNumber) === -1) {
+        generatedNumbers.push(randomNumber);
+      }
     }
 
     return generatedNumbers;
   }
 
   draw(): boolean {
-    let randNr: number;
     let hits: number = 0;
 
     let drawnNumbers: number[] = this.generateNumbers();
