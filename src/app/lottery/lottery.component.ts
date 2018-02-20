@@ -15,7 +15,6 @@ export class LotteryComponent implements OnInit {
   // progress bar
   // definitions of all predefined lotteries
   // exclude duplicates when generating numbers
-  // configuration of prizes
 
   lotteryStarted: boolean = false;
   simulationPaused: boolean = false;
@@ -28,6 +27,11 @@ export class LotteryComponent implements OnInit {
 
     numberOfDrawnNumbers: 6,
     numberOfAllNumbers: 42,
+    prizes: {
+      4: 100,
+      5: 10000
+      6: 1000000
+    },
 
     simulationYears: 1
   };
@@ -59,6 +63,12 @@ export class LotteryComponent implements OnInit {
 
           numberOfDrawnNumbers: 6,
           numberOfAllNumbers: 42,
+
+          prizes: {
+            4: 100,
+            5: 10000
+            6: 1000000
+          },
 
           simulationYears: 1
         }
@@ -132,11 +142,11 @@ export class LotteryComponent implements OnInit {
 
     this.currentAmount -= this.config.costOfTicket;
 
-    if(hits > 3) {
-      this.currentAmount += 1000;
-      this.log += "Hits: " + hits + "\n";
-    }
-    else {
+    for(let hitsNumber in this.config.prizes) {
+      if(hits === parseInt(hitsNumber)) {
+        this.currentAmount += this.config.prizes[hitsNumber];
+        this.log += "Hits: " + hits + "Prize: " + this.config.prizes[hitsNumber] +"\n";
+      }
     }
 
     return true;
