@@ -1,0 +1,4 @@
+- progress bar
+- definitions of all predefined lotteries
+- add possibility to define all lottery properties
+- add styles

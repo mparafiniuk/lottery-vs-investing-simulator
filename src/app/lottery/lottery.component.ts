@@ -9,14 +9,6 @@ import { Config } from '../config';
 })
 export class LotteryComponent implements OnInit {
 
-  // TODO:
-  // config options:
-
-  // progress bar
-  // definitions of all predefined lotteries
-  // exclude duplicates when generating numbers
-  // add possibility to define all lottery properties
-
   lotteryStarted: boolean = false;
   simulationPaused: boolean = false;
 
