@@ -5,13 +5,17 @@ import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { LotteryComponent } from './lottery/lottery.component';
 import { ConfigComponent } from './config/config.component';
+import { InvestingComponent } from './investing/investing.component';
+import { SimulationComponent } from './simulation/simulation.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LotteryComponent,
-    ConfigComponent
+    ConfigComponent,
+    InvestingComponent,
+    SimulationComponent
   ],
   imports: [
     BrowserModule,
