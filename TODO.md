@@ -1,4 +1,9 @@
 - progress bar
-- definitions of all predefined lotteries
+- define way to store predefined lotteries (json file?)
+- create definitions of all predefined lotteries
 - add possibility to define all lottery properties
 - add styles
+- investing component
+- move simulation code to simulation component
+- start both simulations at the same time
+- add real-time generated chart of amount in time
