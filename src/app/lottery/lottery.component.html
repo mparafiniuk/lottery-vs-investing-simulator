@@ -3,6 +3,17 @@
 
 <div>
   <div>
+    <label>Choose predefined lottery
+      <select (change)="loadLottery($event.target.value)">
+        <option value=""></option>
+        <option value="1">Test lottery</option>
+      </select>
+    </label>
+  </div>
+</div>
+
+<div>
+  <div>
     <label>Initial amount of money
       <input [(ngModel)]="config.initialAmount" size="10">
     </label>

@@ -12,9 +12,8 @@ export class LotteryComponent implements OnInit {
   // TODO:
   // config options:
 
-  // start/stop button
   // progress bar
-  // option to select popular lotteries
+  // definitions of all predefined lotteries
   // exclude duplicates when generating numbers
   // configuration of prizes
 
@@ -48,6 +47,23 @@ export class LotteryComponent implements OnInit {
 
   ngOnInit() {
 
+  }
+
+  loadLottery(lotteryId: number): void {
+    switch(parseInt(lotteryId)) {
+      case 1:
+        this.config = {
+          initialAmount: 1000,
+          costOfTicket: 10,
+          dailyNumberOfTickets: 2,
+
+          numberOfDrawnNumbers: 6,
+          numberOfAllNumbers: 42,
+
+          simulationYears: 1
+        }
+        break;
+    }
   }
 
   startSimulation(): void {
