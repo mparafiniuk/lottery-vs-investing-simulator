@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { SimulationConfig } from './simulation.config';
 import { LotteryComponent } from '../lottery/lottery.component';
@@ -24,7 +24,8 @@ export class SimulationComponent implements OnInit {
   simDays: number;
   currentDay: number;
 
-  lottery: LotteryComponent;
+  @ViewChild(LotteryComponent)
+  private lotteryComponent: LotteryComponent;
 
   constructor() { }
 
@@ -65,7 +66,7 @@ export class SimulationComponent implements OnInit {
         clearInterval(this.simClock);
       }
 
-      this.lottery.start();
+      this.lotteryComponent.start();
     }, this.config.clockInterval);
   }
 
