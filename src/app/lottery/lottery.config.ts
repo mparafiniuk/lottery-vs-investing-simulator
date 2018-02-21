@@ -1,4 +1,4 @@
-export class Config {
+export class LotteryConfig {
   initialAmount: number;
 
   costOfTicket: number;
@@ -7,5 +7,5 @@ export class Config {
   numberOfDrawnNumbers: number;
   numberOfAllNumbers: number;
 
-  simulationYears: number;
+  prizes: object;
 }

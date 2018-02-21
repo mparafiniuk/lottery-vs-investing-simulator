@@ -1,6 +1,6 @@
 
 <!-- <app-config></app-config> -->
-
+<h3>Lottery</h3>
 <div>
   <div>
     <label>Choose predefined lottery
@@ -30,20 +30,10 @@
       <input [(ngModel)]="config.dailyNumberOfTickets" size="10">
     </label>
   </div>
-
-  <div>
-    <label>Simulation time (in years)
-      <input [(ngModel)]="config.simulationYears" size="10">
-    </label>
-  </div>
 </div>
 
-<button (click)="startSimulation()" [hidden]="lotteryStarted">Start</button>
-<button (click)="stopSimulation()" [hidden]="!lotteryStarted">Stop</button>
-<button (click)="pauseSimulation()" [hidden]="!lotteryStarted">Pause</button><br>
 <div>
   Amount: <span>{{ currentAmount }}</span><br>
-  Day: <span>{{ currentDay }}</span>
 </div>
 
 {{ log }}

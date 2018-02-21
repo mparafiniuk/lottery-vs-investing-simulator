@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Config } from '../config';
+import { LotteryConfig } from './lottery.config';
 
 @Component({
   selector: 'app-lottery',
@@ -9,10 +9,7 @@ import { Config } from '../config';
 })
 export class LotteryComponent implements OnInit {
 
-  lotteryStarted: boolean = false;
-  simulationPaused: boolean = false;
-
-  config: Config = {
+  config: LotteryConfig = {
     initialAmount: 15,
 
     costOfTicket: 5,
@@ -22,31 +19,23 @@ export class LotteryComponent implements OnInit {
     numberOfAllNumbers: 42,
     prizes: {
       4: 100,
-      5: 10000
+      5: 10000,
       6: 1000000
-    },
-
-    simulationYears: 1
+    }
   };
 
   luckyNumbers: number[];
   currentAmount: number;
-  currentDay: number;
-
-  simInterval: number;
-
-  simulationDays: number;
-  readonly daysInYear: number = 365.242199;
 
   log: string = "";
 
   constructor() { }
 
   ngOnInit() {
-
+    this.currentAmount = 15;
   }
 
-  loadLottery(lotteryId: number): void {
+  loadLottery(lotteryId: string): void {
     switch(parseInt(lotteryId)) {
       case 1:
         this.config = {
@@ -59,58 +48,24 @@ export class LotteryComponent implements OnInit {
 
           prizes: {
             4: 100,
-            5: 10000
+            5: 10000,
             6: 1000000
-          },
-
-          simulationYears: 1
+          }
         }
         break;
     }
   }
 
-  startSimulation(): void {
-    this.lotteryStarted = true;
-    this.loadConfigData();
+  start(): void {
+    this.luckyNumbers = this.generateNumbers();
 
-    this.currentDay = 0;
-    this.simulation();
-  }
-
-  stopSimulation(): void {
-    this.lotteryStarted = false;
-    clearInterval(this.simInterval);
-  }
-
-  pauseSimulation(): void {
-    if(this.simulationPaused === false) {
-      clearInterval(this.simInterval);
-      this.simulationPaused = true;
+    for(let i=0; i<this.config.dailyNumberOfTickets; i++) {
+      this.draw();
     }
-    else {
-      this.simulation();
-    }
-  }
-
-  simulation(): void {
-    this.simulationPaused = false;
-
-    this.simInterval = setInterval(() => {
-      this.luckyNumbers = this.generateNumbers();
-
-      for(let i=0; i<this.config.dailyNumberOfTickets; i++) {
-        this.draw();
-      }
-
-      if(++this.currentDay >= this.simulationDays) {
-        clearInterval(this.simInterval);
-      }
-    }, 1);
   }
 
   loadConfigData(): void {
     this.currentAmount = this.config.initialAmount;
-    this.simulationDays = Math.floor(this.config.simulationYears * this.daysInYear);
   }
 
   generateNumbers(): number[] {
@@ -136,7 +91,7 @@ export class LotteryComponent implements OnInit {
         hits++;
       }
     }
-
+    
     this.currentAmount -= this.config.costOfTicket;
 
     for(let hitsNumber in this.config.prizes) {
