@@ -9,6 +9,8 @@ import { LotteryComponent } from '../lottery/lottery.component';
   styleUrls: ['./simulation.component.css']
 })
 export class SimulationComponent implements OnInit {
+  @ViewChild(LotteryComponent)
+  private lotteryComponent: LotteryComponent;
 
   simulationStarted: boolean = false;
   simulationPaused: boolean = false;
@@ -17,15 +19,12 @@ export class SimulationComponent implements OnInit {
 
   config: SimulationConfig = {
     simYears: 5,
-    clockInterval: 10
+    clockInterval: 200
   };
 
   simClock: number;
   simDays: number;
   currentDay: number;
-
-  @ViewChild(LotteryComponent)
-  private lotteryComponent: LotteryComponent;
 
   constructor() { }
 

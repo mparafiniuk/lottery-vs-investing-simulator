@@ -1,39 +1,35 @@
 
 <!-- <app-config></app-config> -->
 <h3>Lottery</h3>
-<div>
-  <div>
-    <label>Choose predefined lottery
-      <select (change)="loadLottery($event.target.value)">
-        <option value=""></option>
-        <option value="1">Test lottery</option>
-      </select>
-    </label>
+
+<div class="config-container">
+  <div class="form-group">
+    <label>Choose predefined lottery</label>
+    <select (change)="loadLottery($event.target.value)">
+      <option value=""></option>
+      <option value="1">Test lottery</option>
+      <option value="2">Test lottery 2</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label>Initial amount of money</label>
+    <input [(ngModel)]="config.initialAmount" size="10">
+  </div>
+
+  <div class="form-group">
+    <label>Cost of lottery ticket</label>
+    <input [(ngModel)]="config.costOfTicket" size="10">
+  </div>
+
+  <div class="form-group">
+    <label>Number of daily bought tickets</label>
+    <input [(ngModel)]="config.dailyNumberOfTickets" size="10">
   </div>
 </div>
 
-<div>
-  <div>
-    <label>Initial amount of money
-      <input [(ngModel)]="config.initialAmount" size="10">
-    </label>
-  </div>
-
-  <div>
-    <label>Cost of lottery ticket
-      <input [(ngModel)]="config.costOfTicket" size="10">
-    </label>
-  </div>
-
-  <div>
-    <label>Number of daily bought tickets
-      <input [(ngModel)]="config.dailyNumberOfTickets" size="10">
-    </label>
-  </div>
-</div>
-
-<div>
-  Amount: <span>{{ currentAmount }}</span><br>
+<div class="current-info">
+  <b>Current amount:</b> <span>{{ currentAmount }}</span><br>
 </div>
 
 {{ log }}

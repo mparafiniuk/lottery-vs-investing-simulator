@@ -1,18 +1,21 @@
-<app-lottery></app-lottery>
-<app-investing></app-investing>
+<div class="container">
+  <div id="simulation-container">
+    <h3>Lottery vs Investing Simulator</h3>
+    <div>
+      <label>Simulation time (in years)
+        <input [(ngModel)]="config.simYears" size="10">
+      </label>
+    </div>
 
+    <button (click)="startSimulation()" [hidden]="simulationStarted">Start</button>
+    <button (click)="stopSimulation()" [hidden]="!simulationStarted">Stop</button>
+    <button (click)="pauseSimulation()" [hidden]="!simulationStarted">Pause</button><br>
 
-<h3>Simulation</h3>
-<div>
-  <label>Simulation time (in years)
-    <input [(ngModel)]="config.simYears" size="10">
-  </label>
-</div>
+    <div class="">
+      Day: <span>{{ currentDay }}</span>
+    </div>
+  </div>
 
-<button (click)="startSimulation()" [hidden]="simulationStarted">Start</button>
-<button (click)="stopSimulation()" [hidden]="!simulationStarted">Stop</button>
-<button (click)="pauseSimulation()" [hidden]="!simulationStarted">Pause</button><br>
-
-<div class="">
-  Day: <span>{{ currentDay }}</span>
+  <app-lottery></app-lottery>
+  <app-investing></app-investing>
 </div>
