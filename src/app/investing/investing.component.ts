@@ -1,15 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 
+import { LotteryConfig } form 'investing.config';
+
 @Component({
   selector: 'app-investing',
   templateUrl: './investing.component.html',
   styleUrls: ['./investing.component.css']
 })
-export class InvestingComponent implements OnInit {
+export class InvestingComponent {
 
-  constructor() { }
+  config: InvestingConfig = {
+    rateOfReturn: 4,
 
-  ngOnInit() {
+    periodicContribution: 100,
+    contributionFrequency: 1
+  };
+
+  currentAmount: number;
+
+  setCurrentAmount(amount: number): void {
+    this.currentAmount = amount;
   }
 
+  start(): void {
+
+  }
 }

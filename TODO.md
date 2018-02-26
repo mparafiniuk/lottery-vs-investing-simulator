@@ -7,3 +7,5 @@
 - start both simulations at the same time
 - add real-time generated chart of amount in time
 - add stats after running simulation
+- add tests
+- use services to share data between components

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { SimulationConfig } from './simulation.config';
 import { LotteryComponent } from '../lottery/lottery.component';
+import { InvestingComponent } from '../investing/investing.component';
 
 @Component({
   selector: 'app-simulation',
@@ -11,6 +12,9 @@ import { LotteryComponent } from '../lottery/lottery.component';
 export class SimulationComponent implements OnInit {
   @ViewChild(LotteryComponent)
   private lotteryComponent: LotteryComponent;
+
+  @ViewChild(InvestingComponent)
+  private investingComponent: InvestingComponent;
 
   simulationStarted: boolean = false;
   simulationPaused: boolean = false;
@@ -34,7 +38,9 @@ export class SimulationComponent implements OnInit {
 
   loadConfig(): void {
     this.simDays = Math.floor(this.config.simYears * this.daysInYear);
+    
     this.lotteryComponent.setCurrentAmount(this.config.initialAmount);
+    this.investingComponent.setCurrentAmount(this.config.initialAmount);
   }
 
   startSimulation(): void {
