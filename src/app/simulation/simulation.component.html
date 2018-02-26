@@ -2,9 +2,13 @@
   <div id="simulation-container">
     <h3>Lottery vs Investing Simulator</h3>
     <div>
-      <label>Simulation time (in years)
-        <input [(ngModel)]="config.simYears" size="10">
-      </label>
+      <label>Simulation time (in years)</label>
+      <input [(ngModel)]="config.simYears" size="10">
+    </div>
+
+    <div class="form-group">
+      <label>Initial amount of money</label>
+      <input [(ngModel)]="config.initialAmount" size="10">
     </div>
 
     <button (click)="startSimulation()" [hidden]="simulationStarted">Start</button>

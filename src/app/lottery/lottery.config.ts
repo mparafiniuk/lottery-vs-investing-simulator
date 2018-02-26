@@ -1,6 +1,4 @@
 export class LotteryConfig {
-  initialAmount: number;
-
   costOfTicket: number;
   dailyNumberOfTickets: number;
 

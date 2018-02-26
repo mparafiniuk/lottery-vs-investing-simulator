@@ -7,11 +7,9 @@ import { LotteryConfig } from './lottery.config';
   templateUrl: './lottery.component.html',
   styleUrls: ['./lottery.component.css'],
 })
-export class LotteryComponent implements OnInit {
+export class LotteryComponent {
 
   config: LotteryConfig = {
-    initialAmount: 15,
-
     costOfTicket: 5,
     dailyNumberOfTickets: 2,
 
@@ -29,17 +27,10 @@ export class LotteryComponent implements OnInit {
 
   log: string = "";
 
-  constructor() { }
-
-  ngOnInit() {
-    this.currentAmount = 15;
-  }
-
   loadLottery(lotteryId: string): void {
     switch(parseInt(lotteryId)) {
       case 1:
         this.config = {
-          initialAmount: 1000,
           costOfTicket: 10,
           dailyNumberOfTickets: 2,
 
@@ -56,16 +47,16 @@ export class LotteryComponent implements OnInit {
     }
   }
 
+  setCurrentAmount(amount: number): void {
+    this.currentAmount = amount;
+  }
+
   start(): void {
     this.luckyNumbers = this.generateNumbers();
 
     for(let i=0; i<this.config.dailyNumberOfTickets; i++) {
       this.draw();
     }
-  }
-
-  loadConfigData(): void {
-    this.currentAmount = this.config.initialAmount;
   }
 
   generateNumbers(): number[] {
@@ -91,7 +82,7 @@ export class LotteryComponent implements OnInit {
         hits++;
       }
     }
-    
+
     this.currentAmount -= this.config.costOfTicket;
 
     for(let hitsNumber in this.config.prizes) {
