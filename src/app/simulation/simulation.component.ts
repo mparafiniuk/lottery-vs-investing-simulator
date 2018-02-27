@@ -22,8 +22,8 @@ export class SimulationComponent implements OnInit {
   readonly daysInYear: number = 365.242199;
 
   config: SimulationConfig = {
-    simYears: 5,
-    clockInterval: 200,
+    simYears: 1,
+    clockInterval: 5,
     initialAmount: 1000
   };
 
@@ -41,6 +41,7 @@ export class SimulationComponent implements OnInit {
 
     this.lotteryComponent.setCurrentAmount(this.config.initialAmount);
     this.investingComponent.setCurrentAmount(this.config.initialAmount);
+    this.investingComponent.setCurrentDayToZero();
   }
 
   startSimulation(): void {
@@ -73,8 +74,8 @@ export class SimulationComponent implements OnInit {
         clearInterval(this.simClock);
       }
 
-      this.lotteryComponent.start();
-      this.investingComponent.start();
+      this.lotteryComponent.simulationCycle();
+      this.investingComponent.simulationCycle();
     }, this.config.clockInterval);
   }
 

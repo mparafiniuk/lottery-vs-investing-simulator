@@ -51,7 +51,7 @@ export class LotteryComponent {
     this.currentAmount = amount;
   }
 
-  start(): void {
+  simulationCycle(): void {
     this.luckyNumbers = this.generateNumbers();
 
     for(let i=0; i<this.config.dailyNumberOfTickets; i++) {

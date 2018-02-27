@@ -3,9 +3,11 @@
 - create definitions of all predefined lotteries
 - add possibility to define all lottery properties
 - add styles
-- investing component
 - add real-time generated chart of amount in time
 - add stats after running simulation
 - add tests
 - use services to share data between components
 - rename start functions in lottery and investing components
+- add configurable taxes to investing component
+- fix issues related to rounding numbers in investing component
+- add support for peridic contribiutions in investing component
