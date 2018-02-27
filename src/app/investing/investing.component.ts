@@ -23,6 +23,6 @@ export class InvestingComponent {
   }
 
   start(): void {
-
+    console.log('a');
   }
 }

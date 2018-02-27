@@ -38,7 +38,7 @@ export class SimulationComponent implements OnInit {
 
   loadConfig(): void {
     this.simDays = Math.floor(this.config.simYears * this.daysInYear);
-    
+
     this.lotteryComponent.setCurrentAmount(this.config.initialAmount);
     this.investingComponent.setCurrentAmount(this.config.initialAmount);
   }
@@ -74,6 +74,7 @@ export class SimulationComponent implements OnInit {
       }
 
       this.lotteryComponent.start();
+      this.investingComponent.start();
     }, this.config.clockInterval);
   }
 
