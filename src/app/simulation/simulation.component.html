@@ -15,8 +15,10 @@
     <button (click)="stopSimulation()" [hidden]="!simulationStarted">Stop</button>
     <button (click)="pauseSimulation()" [hidden]="!simulationStarted">Pause</button><br>
 
-    <div class="">
+    <div id="simulation-progress">
       Day: <span>{{ currentDay }}</span>
+
+      <mat-progress-bar value="{{ simProgress }}"></mat-progress-bar>
     </div>
   </div>
 

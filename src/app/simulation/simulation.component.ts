@@ -23,13 +23,14 @@ export class SimulationComponent implements OnInit {
 
   config: SimulationConfig = {
     simYears: 1,
-    clockInterval: 5,
+    clockInterval: 20,
     initialAmount: 1000
   };
 
   simClock: number;
   simDays: number;
   currentDay: number;
+  simProgress: number;
 
   constructor() { }
 
@@ -73,6 +74,7 @@ export class SimulationComponent implements OnInit {
       if(++this.currentDay >= this.simDays) {
         clearInterval(this.simClock);
       }
+      this.simProgress = Math.round(this.currentDay / this.simDays * 100);
 
       this.lotteryComponent.simulationCycle();
       this.investingComponent.simulationCycle();

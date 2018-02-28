@@ -1,4 +1,3 @@
-- progress bar
 - define way to store predefined lotteries (json file?)
 - create definitions of all predefined lotteries
 - add possibility to define all lottery properties
@@ -11,3 +10,4 @@
 - add configurable taxes to investing component
 - fix issues related to rounding numbers in investing component
 - add support for peridic contribiutions in investing component
+- add configurable daily amount of money put into simulation
