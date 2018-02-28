@@ -1,7 +1,7 @@
 - define way to store predefined lotteries (json file?)
 - create definitions of all predefined lotteries
 - add possibility to define all lottery properties
-- add styles
+- add more styles
 - add real-time generated chart of amount in time
 - add stats after running simulation
 - add tests
@@ -11,3 +11,4 @@
 - fix issues related to rounding numbers in investing component
 - add support for peridic contribiutions in investing component
 - add configurable daily amount of money put into simulation
+- add simulation speed configuration
