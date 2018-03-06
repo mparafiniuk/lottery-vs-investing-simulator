@@ -23,7 +23,7 @@ export class SimulationComponent implements OnInit {
 
   config: SimulationConfig = {
     simYears: 1,
-    clockInterval: 20,
+    clockInterval: 100,
     initialAmount: 1000
   };
 

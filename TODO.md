@@ -11,4 +11,4 @@
 - fix issues related to rounding numbers in investing component
 - add support for peridic contribiutions in investing component
 - add configurable daily amount of money put into simulation
-- add simulation speed configuration
+- disable some config fields during simulation
