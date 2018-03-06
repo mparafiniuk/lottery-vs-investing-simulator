@@ -13,7 +13,7 @@ export class InvestingComponent {
     rateOfReturn: 4,
 
     periodicContribution: 100,
-    contributionFrequency: 1
+    contributionFrequency: 30
   };
 
   // TODO refactor so that this variable be in only one place instead of two different components
@@ -31,14 +31,20 @@ export class InvestingComponent {
 
   setCurrentDayToZero(): void {
     this.currentDay = 0;
+    // TODO this is incorrect to only calculate that on simulation start
+    // it should be racalculated based on chosen capitalization
     this.dailyProfit = this.calculateDailyProfit();
   }
 
   simulationCycle(): void {
     this.currentDay++;
 
+    if(this.currentDay % this.config.contributionFrequency == 0) {
+      this.currentAmount += this.config.periodicContribution;
+    }
+
     this.currentAmount = this.roundToTwoDecimalPlaces(
-        this.currentAmount + this.dailyProfit);  
+        this.currentAmount + this.dailyProfit);
   }
 
   calculateDailyProfit(): number {

@@ -9,8 +9,7 @@
 - rename start functions in lottery and investing components
 - add configurable taxes to investing component
 - fix issues related to rounding numbers in investing component
-- add support for peridic contribiutions in investing component
-- add configurable daily amount of money put into simulation
+- add configurable daily amount of money added into lottery simulation
 - disable some config fields during simulation
 - invert colors on simulation speed slider
 - add hammerJS so that sliding behaviour of slider would work
