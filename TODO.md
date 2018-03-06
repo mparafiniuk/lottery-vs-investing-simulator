@@ -12,3 +12,5 @@
 - add support for peridic contribiutions in investing component
 - add configurable daily amount of money put into simulation
 - disable some config fields during simulation
+- invert colors on simulation speed slider
+- add hammerJS so that sliding behaviour of slider would work
