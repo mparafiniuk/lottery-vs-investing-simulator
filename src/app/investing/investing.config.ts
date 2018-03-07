@@ -3,4 +3,5 @@ export class InvestingConfig {
 
   periodicContribution: number;
   contributionFrequency: number;
+  capitalizationOfInterest: number;
 }

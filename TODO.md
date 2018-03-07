@@ -1,17 +1,16 @@
-- define way to store predefined lotteries (json file?)
-- create definitions of all predefined lotteries
+- define way to store predefined lotteries
+- create definitions of all predefined lotteries (fetch from Free Lottery Data API(?))
 - add possibility to define all lottery properties
 - add more styles
 - add real-time generated chart of amount in time
 - add stats after running simulation
 - add tests
 - use services to share data between components
-- rename start functions in lottery and investing components
 - add configurable taxes to investing component
 - fix issues related to rounding numbers in investing component
 - add configurable daily amount of money added into lottery simulation
 - disable some config fields during simulation
 - invert colors on simulation speed slider
 - add hammerJS so that sliding behaviour of slider would work
-- add configurable capitalization of interest in simulation component
 - deploy to github pages
+- add possibility to define lottery such as powerball or euromillions
