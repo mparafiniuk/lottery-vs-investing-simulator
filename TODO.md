@@ -13,3 +13,5 @@
 - disable some config fields during simulation
 - invert colors on simulation speed slider
 - add hammerJS so that sliding behaviour of slider would work
+- add configurable capitalization of interest in simulation component
+- deploy to github pages
