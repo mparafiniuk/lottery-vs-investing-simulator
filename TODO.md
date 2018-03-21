@@ -11,6 +11,5 @@
 - add configurable daily amount of money added into lottery simulation
 - disable some config fields during simulation
 - invert colors on simulation speed slider
-- add hammerJS so that sliding behaviour of slider would work
 - deploy to github pages
 - add possibility to define lottery such as powerball or euromillions
