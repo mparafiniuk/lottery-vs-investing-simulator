@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatSliderChange } from '@angular/material/slider';
 
 import { SimulationConfig } from './simulation.config';
 import { LotteryComponent } from '../lottery/lottery.component';
@@ -37,6 +38,10 @@ export class SimulationComponent implements OnInit {
   ngOnInit() {
   }
 
+  changeSimulationSpeed(sliderEvent: MatSliderChange): void {
+    this.config.clockInterval = sliderEvent.value;
+  }
+
   loadConfig(): void {
     this.simDays = Math.floor(this.config.simYears * this.daysInYear);
 
@@ -55,12 +60,12 @@ export class SimulationComponent implements OnInit {
 
   stopSimulation(): void {
     this.simulationStarted = false;
-    clearInterval(this.simClock);
+    clearTimeout(this.simClock);
   }
 
   pauseSimulation(): void {
     if(this.simulationPaused === false) {
-      clearInterval(this.simClock);
+      clearTimeout(this.simClock);
       this.simulationPaused = true;
     }
     else {
@@ -70,15 +75,15 @@ export class SimulationComponent implements OnInit {
   }
 
   start(): void {
-    this.simClock = setInterval(() => {
-      if(++this.currentDay >= this.simDays) {
-        clearInterval(this.simClock);
-      }
+    this.simClock = window.setTimeout(() => {
       this.simProgress = Math.round(this.currentDay / this.simDays * 100);
 
       this.lotteryComponent.simulationCycle();
       this.investingComponent.simulationCycle();
+
+      if(++this.currentDay <= this.simDays) {
+        this.start();
+      }
     }, this.config.clockInterval);
   }
-
 }

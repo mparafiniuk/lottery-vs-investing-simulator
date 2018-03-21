@@ -13,7 +13,7 @@
 
     <div class="form-group">
       <label>Simulation speed</label>
-      <mat-slider min="1" max="500" invert [(ngModel)]="config.clockInterval"></mat-slider>
+      <mat-slider min="1" max="500" invert (input)="changeSimulationSpeed($event)"></mat-slider>
     </div>
 
     <button (click)="startSimulation()" [hidden]="simulationStarted">Start</button>
